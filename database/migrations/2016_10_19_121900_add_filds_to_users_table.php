@@ -32,7 +32,7 @@ class AddFildsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-                      
+                    $table->dropforeign('id_user_type');  
                    $table->dropColumn(['second_name', 'third_name', 'id_user_type']);
 });
         //
