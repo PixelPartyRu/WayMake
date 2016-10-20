@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\UserTypes;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -49,8 +49,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'second_name' => 'required|max:255',
+            'third_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+
         ]);
     }
 
@@ -62,8 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $defaultType = UserTypes::all()->first()->id;
         return User::create([
             'name' => $data['name'],
+            'second_name' => $data['second_name'],
+            'third_name' => $data['third_name'],
+            'id_user_type' => $defaultType,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

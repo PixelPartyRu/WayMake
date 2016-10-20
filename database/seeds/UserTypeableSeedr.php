@@ -16,3 +16,4 @@ class UserTypeableSeedr extends Seeder
         //
     }
 }
+	
