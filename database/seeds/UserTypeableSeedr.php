@@ -12,7 +12,7 @@ class UserTypeableSeedr extends Seeder
     public function run()
     {
 
-    	DB:table('user_types')->insert(['user_types' => 'пользователь']);
+    	DB::table('user_types')->insert(['user_type' => 'пользователь']);
         //
     }
 }
